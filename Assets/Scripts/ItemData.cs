@@ -16,7 +16,7 @@ public class ItemData
     public int price;
     public int power;
     public int level;
-    public bool inStackable;
+    public bool isStackable;
     public string iconPath;
 
     public void InitalizeEnums()
