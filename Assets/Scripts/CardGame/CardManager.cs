@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CardManager : MonoBehaviour
@@ -58,11 +59,13 @@ public class CardManager : MonoBehaviour
         if(handCards.Count >= 6)                                //손패가 이미 6장 이상이면 드로우 하지 않음
         {
             Debug.Log("손패가 가득 찼습니다. ! (최대 6장)");
+            ToastMessage.Instance.ShowMessage("손패가 가득 찼습니다. ! (최대 6장)", ToastMessage.MessageType.Warning);
             return;
         }
         if(deckCards.Count == 0)
         {
             Debug.Log("덱에 카드가 없습니다.");
+            ToastMessage.Instance.ShowMessage("덱에 카드가 없습니다.", ToastMessage.MessageType.Warning);
             return;
         }
         //덱에서 맨 위 카드 가져오기
@@ -88,6 +91,7 @@ public class CardManager : MonoBehaviour
         // 손패 위치 업데이트
         ArrangeHand();
         Debug.Log("카드를 드로우 했습니다. : " + cardData.cardName + " (손패 : " + handCards.Count + "/6");
+        ToastMessage.Instance.ShowMessage("카드를 드로우 했습니다. : " + cardData.cardName + " (손패 : " + handCards.Count + "/6", ToastMessage.MessageType.info);
     }
 
     public void ArrangeHand()
